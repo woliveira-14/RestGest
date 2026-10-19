@@ -214,6 +214,22 @@ export default function InventoryIndex({ items }: { items: InventoryRow[] }) {
             </TableBody>
           </Table>
 
+          <table className="mt-6 w-full text-sm">
+            <tbody>
+              <tr>
+                <td className="font-medium">Total de insumos</td>
+                <td className="text-right">{items.length}</td>
+              </tr>
+              <tr>
+                <td className="font-medium">Valor total em estoque</td>
+                <td className="text-right">
+                  {formatCurrency(
+                    items.reduce((total, item) => total + item.currentQuantity * item.unitCost, 0)
+                  )}
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </CardContent>
       </Card>
     </Page>
